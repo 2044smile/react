@@ -44,8 +44,93 @@
 2. 지속적인 버전 업데이트
 3. 높은 상태관리 복잡도
 
+### JSX
+
+- JavaScript(JS) + X mean A syntax extension to JavaScript => 확장 문법
+- JavaScript + XML/HTML
+
+```js
+const element = <h1>Hello World</h1>;
+```
+
+#### JSX의 역할
+
+- 내부적으로 XML/HTML 코드를 JavaScript 로 변환하는 역할
+- JSX 를 사용하면 장점들이 많다.
+
+```js
+React.createElement(
+  type,  // 유형, 타입 e.g) div, spen
+  [props],  // 속성
+  [...children]  // 자식 엘리먼트
+)
+
+class Hello extends React.Component {
+  render() {
+    return <div>Hello {this.props.toWhat}</div>
+  }
+}
+
+ReactDOM.render(  // 실제 화면에 렌더링
+  <Hello toWhat="World" />
+  document.getElementById('root')
+)
+
+class Hello extends React.Component {
+  render() {
+    return React.createElement('div', null, `Hello ${this.props.toWhat}`);
+  }
+}
+
+ReactDOM.render(  // 실제 화면에 렌더링
+  React.createElement(Hello, { toWhat: 'World' }, null),
+  document.getElementById('root')
+)
+
+// JSX 를 사용한 코드
+const element = (
+  <h1 className="greeting">
+    Hello, World!
+  </h1>
+)
+
+// JSX 를 사용하지 않은 코드
+const element = React.createElement(
+  'h1',
+  { className: 'greeting' },
+  'Hello, World!'
+)
+-> React.createElement() 의 결과로 아래와 같은 객체가 생성된다.
+const element = {
+  type: 'h1',
+  props: {
+    className: 'greeting',
+    children: 'Hello, world'
+  }
+}
+```
+
+#### JSX의 장점
+
+- 코드 간결
+- 가독성 향상
+- 버그를 발견하기 쉽다.
+- Injection Attacks 방어
+
+```js
+// JSX 사용
+<div>Hello, {name}</div>
+
+// JSX 미사용
+React.createElement('div', null, `Hello, ${name}`)
+```
+
+### command
+
+- npx create-react-app app
+- npm start => 애플리케이션 실행
+
 ## Reference
 
 - nvm
-- node.js v16.13.1
-- npx create-react-app app
+- node.js v20.18.0
