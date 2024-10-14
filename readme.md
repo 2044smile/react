@@ -48,3 +48,4 @@
 
 - nvm
 - node.js v16.13.1
+- npx create-react-app app
