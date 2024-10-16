@@ -142,6 +142,120 @@ React.createElement('div', null, `Hello, ${name}`)
   1. React 코드를 작성하면, 그 안에 있는 JSX (React Element) 가 가상 DOM 에서 관리된다.
   2. React는 변경 사항을 가상 DOM에 반영하고, 실제로 변경이 필요한 부분만 DOM Element 로 변환해서 브라우저에 업데이트 한다.
 
+## Components와 Props의 정의
+
+![alt text](image-11.png)
+
+- Component-Based
+  - 레고 블록 조립하듯 컴포넌트들을 모아서 개발
+  - 어떤 속성(Props)들을 입력으로 받아서 그에 맞는 React Element 를 생성하여 리턴한다
+- Props(Property; 속성)
+  - ![alt text](image-13.png)
+  - Component의 속성
+  - 컴포넌트에 전달할 다양한 정보를 담고 있는 자바스크립트 객체
+  - 같은 React Component 에서 눈에 보이는 글자나 색깔 등의 속성을 변경하고 싶을 때 사용하는 Component 의 속 재료이다
+  - ![alt text](image-14.png)
+
+### Component 만들기
+
+- Function Component
+  ```js
+  // 간단한 코드를 장점으로 가진다.
+  function Welcome(props) {
+    return <h1>안녕, {props.name}</h1>;
+  }
+  ```
+- Class Component
+  ```js
+  class Welcome extends React.Component { // React.Component 를 상속받는다.
+    render() {
+      return <h1>안녕, {this.props.name}</h1>;
+    }
+  }
+  ```
+
+### Component의 이름
+
+- Component 이름은 항상 대문자로 시작해야 한다. 
+
+### Component 렌더링
+
+![alt text](image-15.png)
+
+- 붕어빵 틀(Component)에서 찍어서 나온 Element 라는 붕어빵이 실제로 화면에 보인다.
+- 렌더링을 위해서는 Component 로 부터 Element 를 만들어야 한다.
+
+### Component 합성
+
+- 여러 개의 Component 를 합쳐서 하나의 Component 를 만든다 즉 Component 안에 다른 Component를 쓸 수 있다.
+- 복잡한 화면을 여러 개의 Component로 나눠서 구현 가능
+
+```js
+function Welcome(props) {
+  return <h1>Hello, {props.name}</h1>;
+}
+
+function App(props) {
+  return (
+    <div>
+    // Welcome 컴포넌트를 여러 개 사용한다. 즉 App 은 Welcome 컴포넌트를 포함하고 있다.
+      <Welcome name="Mike" />
+      <Welcome name="Tim" />
+      <Welcome name="Jane" />
+    </div>
+  )
+}
+
+ReactDOM.render(
+  <App />,
+  document.getElementById('root')
+)
+```
+
+![alt text](image-16.png)
+
+### Props의 특징
+
+- READ ONLY; 값을 변경할 수 없다.
+- 붕어빵 다 구워졌는데 속재료를 바꿀 수 없음
+- 새로운 값을 Component 에 전달하여 새로 Element를 생성
+- React Component 의 Props 는 변경할 수 없고, 같은 Props 가 들어오면 같은 Element를 리턴해야 한다. 
+
+#### JavaScript 함수의 속성
+
+```js
+// 입력 값(input)을 변경하지 않으며, 같은 입력 값에 대해서는 항상 같은 출력 값을 리턴
+// 모든 React Component는 그들의 Props에 관해서는 Pure 함수 같은 역할을 해야 한다.
+// 모든 React Component는 Props를 직접 바꿀 수 없고, 같은 Props에 대해서는 항상 같은 결과를 보여줄 것!
+function sum(a, b) {
+  return a + b;
+}
+// 입력 값(input)을 변경
+function withdraw(account, amount) {
+  account.total -= amount;
+}
+```
+
+### Props 사용법
+
+```js
+function App(props) {
+  return (
+    <Profile
+        name="Tim"
+        introducation="Hi my name is Tim"
+        viewCount={1500}
+    />
+  );
+}
+// Props 아래와 같은 형태의 JavaScript 객체가 된다.
+{
+  name:"Tim",
+  introduction:"Hi my name is Tim",
+  viewCount: 1500
+}
+```
+
 ## 브라우저는 어떻게 페이지를 화면에 렌더링 할까?
 
 ![alt text](image.png)
