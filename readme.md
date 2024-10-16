@@ -201,6 +201,17 @@ React.createElement('div', null, `Hello, ${name}`)
 
 - DOM 수정을 최소화 하기 위해서 (대부분의 상황에 충분히 빠른 업데이트를 보장하기 위해서)
 
+### 총 정리
+
+- 순수한 JavaScript만 이용해 DOM을 조작할 때에는 DOM 수정을 최소화 해야 한다
+  - Reflow, Repaint를 최소한으로 발생시키기 위함
+  - 동시에 발생하는 업데이트를 최대한 모아 한번만 DOM을 수정해야 함
+  - 서비스 규모가 커질수록 쉽지 않음
+- React는 자체적인 렌더링 프로세스를 사용하므로 이런 걱정에서 자유로움
+  - Render Phase와 Commit Phase로 나뉨
+  - Render Phase에 Virtual DOM을 생성하여 동시에 발생하는 업데이트를 모음
+  - Commit Phase에 Virtual DOM에 반영된 모든 업데이트를 Actual DOM에 한번만 반영함
+
 
 ### command
 
@@ -209,7 +220,6 @@ React.createElement('div', null, `Hello, ${name}`)
 
 ## Reference
 
-- nvm
 - node.js v20.18.0
 - https://www.youtube.com/watch?v=N7qlk_GQRJU&t=428s
 
