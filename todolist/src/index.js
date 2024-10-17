@@ -1,13 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+// import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter } from "react-router-dom";
+
+import Create from './components/create';
+import Read from './components/read';
+import Update from './components/update';
+import Delete from './components/delete';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <Create />
+    <Read />
+    <Update />
+    <Delete />
   </React.StrictMode>
 );
 
