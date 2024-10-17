@@ -256,6 +256,29 @@ function App(props) {
 }
 ```
 
+## State and Lifecycle
+
+- State(상태) -> React Component의 상태 = React Component의 변경 가능한 데이터
+- 렌더링이나 데이터 흐름에 사용되는 값만 state에 포함시켜야 함
+- State는 JavaScript 객체이다
+
+```js
+// 잘못된 사용법
+this.state = {
+  name: 'KK'
+};
+// 정상적인 사용법
+this.setState({
+  name: 'KK'
+})
+```
+
+- Lifecycle(생명주기)
+- Component의 생명주기
+- Component가 계속 존재하는 것이 아니라, 시간의 흐름에 따라 생성되고 업데이트 되다가 사라진다.
+
+![alt text](image-17.png)
+
 ## 브라우저는 어떻게 페이지를 화면에 렌더링 할까?
 
 ![alt text](image.png)
