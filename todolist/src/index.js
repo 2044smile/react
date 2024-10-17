@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 // import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from "react-router-dom";
+// import { BrowserRouter } from "react-router-dom";
 
 import Create from './components/create';
-import Read from './components/read';
+import Retrieve  from './components/retrieve';
 import Update from './components/update';
 import Delete from './components/delete';
 
@@ -14,7 +14,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Create />
-    <Read />
+    <Retrieve />
     <Update />
     <Delete />
   </React.StrictMode>
