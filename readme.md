@@ -279,6 +279,68 @@ this.setState({
 
 ![alt text](image-17.png)
 
+## Hooks
+
+![alt text](image-19.png)
+
+- Function Component 에서 state는 사용 불가, 따라서 Hooks 를 사용
+
+![alt text](image-20.png)
+
+- Function 에서 Hooks 기능
+  - state 관련 함수
+    - useState() -> state를 사용하기 위한 Hook
+    - useEffect() -> Side effect를 수행하기 위한 Hook
+      - Side effect = 효과, 영향 -> `서버에서 데이터 받아오거나 수동으로 DOM을 변경하는 작업`
+        - 다른 컴포넌트에 영향을 미칠 수 있으며, 렌더링 중에는 작업이 완료될 수 없기 때문
+        - React의 함수 컴포넌트에서 Side effect를 시행할 수 있게 해주는 Hook
+    ```js
+    // useState()
+    const [변수명, set 함수명] = useState(초기값);
+
+    import React, { useState } from "react";
+
+    function Counter(props) {
+      const [count, setCount] = useState(0);  // [변수명, set함수명] => 변수 각각에 대해 set함수가 존재
+
+      return (
+        <div>
+          <p>총 {count}번 클릭했습니다.</p>
+          <button onClick={() => setCount(count + 1)}>
+            클릭
+          </button>
+        </div>
+      );
+    }
+
+    // useEffect()
+    useEffect(이펙트 함수, 의존성 배열);  // 이펙트가 의존하고 있는 배열 -> 배열 안에 있는 변수 중에 하나라도 값이 변경되었을 때 effect 함수가 실행
+    useEffect(이펙트 함수, []);  // Effect function이 mount, unmount 시에 단 한번씩만 실행 됨
+    useEffect(이펙트 함수)  // 의존성 배열을 생략하면 컴포넌트가 업데이트 될 때 마다 호출 됨
+
+    import React, { useState, useEffect } from "react";
+
+    function Counter(props) {
+      const [count, setCount] = useState(0);  // [변수명, set함수명] => 변수 각각에 대해 set함수가 존재
+
+      // componentDidMount, componentDidUpdate와 비슷하게 작동합니다.
+      useEffect(() => {
+        document.title = `You clicked ${count} times`; // 브라우저 API를 사용해서 document의 title을 업데이트 합니다.
+      });
+
+      return (
+        <div>
+          <p>총 {count}번 클릭했습니다.</p>
+          <button onClick={() => setCount(count + 1)}>
+            클릭
+          </button>
+        </div>
+      );
+    }
+    ```
+  - Lifecycle 관련 함수
+  - 최적화 관련 함수
+
 ## 브라우저는 어떻게 페이지를 화면에 렌더링 할까?
 
 ![alt text](image.png)
