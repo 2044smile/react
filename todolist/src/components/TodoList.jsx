@@ -4,8 +4,8 @@ import TodoDetail from './TodoDetail';
 function TodoList({ todos, onDelete }) {
     return (
         <ul>
-            {todos.map((todo, index) => (
-                <TodoList
+            {todos && todos.map((todo, index) => (
+                <TodoDetail
                     key={index}
                     todo={todo}
                     onDelete={() => onDelete(index)}  // 인덱스를 기반으로 삭제

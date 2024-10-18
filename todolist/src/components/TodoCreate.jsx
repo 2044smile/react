@@ -17,7 +17,7 @@ function TodoCreate({ onAdd }) {
                 placeholder="할 일 입력"
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
-             />
+            />
             <button onClick={handleAdd}>추가</button>
         </div>
     );
