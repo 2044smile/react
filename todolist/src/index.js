@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+// import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+// import reportWebVitals from './reportWebVitals';
 // import { BrowserRouter } from "react-router-dom";
 // index.js 는 보통 전체 애플리케이션의 진입점 역할
 // 즉, React 애플리케이션이 실행되기 시작하는 파일이 index.js 이기 때문에 
@@ -19,4 +19,4 @@ root.render(
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// reportWebVitals();
