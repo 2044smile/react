@@ -341,6 +341,30 @@ this.setState({
   - Lifecycle 관련 함수
   - 최적화 관련 함수
 
+- useMemo() -> Memoized value 를 return 하는 Hook
+  - Memoization -> 비용이 높은, 연산량이 많은 함수의 결과 값을 저장 -> 같은 입력 값은 호출하면 새로 함수를 호출하는게 아닌 이전에 저장해놨던 호출 결과를 반환
+  - Cache, Memory
+  ```js
+  const memoizedValue = useMemo(
+    () => {
+      // 연산량이 높은 작업을 수행하여 결과를 반환
+      return computeExpensiveValue(의존성 변수1, 의존성 변수2);
+    },
+    [의존성 변수1, 의존성 변수2]
+  )
+  // 의존성 배열을 넣지 않을 경우, 매 렌더링마다 함수가 실행 됨
+  const memoizedValue = useMemo(
+    () => computeExpensiveValue(a, b)
+  );
+  // 의존성 배열이 빈 배열일 경우, 컴포넌트 마운트 시에만 호출 됨
+  const memoizedValue = useMemo(
+    () => {
+      return computeExpensiveValue(a, b);
+    },
+    []
+  );
+  ```
+
 ## 브라우저는 어떻게 페이지를 화면에 렌더링 할까?
 
 ![alt text](image.png)
