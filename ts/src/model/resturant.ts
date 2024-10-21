@@ -3,13 +3,17 @@
 
 export type Resturant = {
     name:string;
-    address: {
-      city:string;
-      country:string;
-    }
-    menu:{
-        name:string;
-        price:number;
-        category:string;
-    }[]
+    address:Address;
+    menu:Menu[]
+}
+
+export type Address = {
+    city:string;
+    country:string;
+}
+
+export type Menu = {  // [{name:"창석이네 고기집",price:2000,category:"가쥬아"},{name:"순신이네 해산물",price:30000,category:"바다"}]
+    name:string;
+    price:number;
+    category:string;
 }
